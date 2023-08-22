@@ -1,0 +1,6 @@
+#!/bin/bash
+
+find /mnt/ -name "*.MXF" | while read f
+do ffmpeg -i "$f" -b:v 12000K -ac 2 -c:a aac -b:a 256k  "${f%.*}.mp4" < /dev/null
+done
+
